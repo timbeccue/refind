@@ -27,8 +27,19 @@
   "content_scripts": [
     {
       "matches": [
-        "*://www.google.*/search*",
-        "*://google.*/search*",
+        "*://www.google.com/search*",
+        "*://www.google.co.uk/search*",
+        "*://www.google.ca/search*",
+        "*://www.google.com.au/search*",
+        "*://www.google.de/search*",
+        "*://www.google.fr/search*",
+        "*://www.google.co.jp/search*",
+        "*://www.google.es/search*",
+        "*://www.google.it/search*",
+        "*://www.google.nl/search*",
+        "*://www.google.pl/search*",
+        "*://www.google.com.br/search*",
+        "*://www.google.co.in/search*",
         "*://www.bing.com/search*",
         "*://duckduckgo.com/*",
         "*://search.yahoo.com/search*"
@@ -50,7 +61,11 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "searchgoggles@timbeccue",
-      "strict_min_version": "57.0"
+      "strict_min_version": "79.0",
+      "data_collection_permissions": {
+        "required": false,
+        "optional": []
+      }
     }
   }
 }
