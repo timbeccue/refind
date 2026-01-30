@@ -174,35 +174,57 @@ if (typeof browser === 'undefined') {
 
     const keysDisplay = formatKeys(shortcut.keys);
 
-    item.innerHTML = `
-      <span class="shortcut-keys">${keysDisplay}</span>
-      <span class="shortcut-term" title="${escapeHtml(shortcut.term)}">${escapeHtml(shortcut.term)}</span>
-      <div class="shortcut-actions">
-        <label class="toggle">
-          <input type="checkbox" ${shortcut.enabled ? 'checked' : ''}>
-          <span class="toggle-slider"></span>
-        </label>
-        <button class="btn-delete" title="Delete">&times;</button>
-      </div>
-    `;
+    // Build DOM elements safely without innerHTML
+    const keysSpan = document.createElement('span');
+    keysSpan.className = 'shortcut-keys';
+    keysSpan.textContent = keysDisplay;
+
+    const termSpan = document.createElement('span');
+    termSpan.className = 'shortcut-term';
+    termSpan.title = shortcut.term;
+    termSpan.textContent = shortcut.term;
+
+    const actionsDiv = document.createElement('div');
+    actionsDiv.className = 'shortcut-actions';
+
+    const toggleLabel = document.createElement('label');
+    toggleLabel.className = 'toggle';
+
+    const toggleInput = document.createElement('input');
+    toggleInput.type = 'checkbox';
+    toggleInput.checked = shortcut.enabled;
+
+    const toggleSlider = document.createElement('span');
+    toggleSlider.className = 'toggle-slider';
+
+    toggleLabel.appendChild(toggleInput);
+    toggleLabel.appendChild(toggleSlider);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn-delete';
+    deleteBtn.title = 'Delete';
+    deleteBtn.textContent = '\u00d7';
+
+    actionsDiv.appendChild(toggleLabel);
+    actionsDiv.appendChild(deleteBtn);
+
+    item.appendChild(keysSpan);
+    item.appendChild(termSpan);
+    item.appendChild(actionsDiv);
 
     // Toggle handler
-    const toggle = item.querySelector('.toggle input');
-    toggle.addEventListener('change', () => {
-      shortcut.enabled = toggle.checked;
+    toggleInput.addEventListener('change', () => {
+      shortcut.enabled = toggleInput.checked;
       item.classList.toggle('disabled', !shortcut.enabled);
       saveShortcuts();
     });
 
     // Delete handler
-    const deleteBtn = item.querySelector('.btn-delete');
     deleteBtn.addEventListener('click', () => {
       deleteShortcut(shortcut.id);
     });
 
     // Add click handler for editing (on the keys or term)
-    const keysSpan = item.querySelector('.shortcut-keys');
-    const termSpan = item.querySelector('.shortcut-term');
     keysSpan.style.cursor = 'pointer';
     termSpan.style.cursor = 'pointer';
     keysSpan.addEventListener('click', () => showAddForm(shortcut));
@@ -258,7 +280,12 @@ if (typeof browser === 'undefined') {
         const keyFormGroup = keyInput.closest('.form-group');
         keyFormGroup.appendChild(warning);
       }
-      warning.innerHTML = `⚠️ This conflicts with "<strong>${escapeHtml(conflict)}</strong>"`;
+      warning.textContent = '';
+      warning.appendChild(document.createTextNode('\u26a0\ufe0f This conflicts with "'));
+      const strong = document.createElement('strong');
+      strong.textContent = conflict;
+      warning.appendChild(strong);
+      warning.appendChild(document.createTextNode('"'));
       warning.hidden = false;
     } else if (warning) {
       warning.hidden = true;
