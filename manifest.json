@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Customize keyboard shortcuts to refine searches with site filters and terms",
   "author": "timbeccue",
+  "homepage_url": "https://github.com/timbeccue/refind",
 
   "permissions": [
     "storage",
@@ -11,9 +12,9 @@
   ],
 
   "icons": {
-    "16": "icons/icon-16.svg",
-    "48": "icons/icon-48.svg",
-    "128": "icons/icon-128.svg"
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
   },
 
   "background": {
@@ -37,8 +38,8 @@
 
   "browser_action": {
     "default_icon": {
-      "16": "icons/icon-16.svg",
-      "48": "icons/icon-48.svg"
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
     },
     "default_title": "Refind",
     "default_popup": "popup/popup.html"
