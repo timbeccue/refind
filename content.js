@@ -12,6 +12,11 @@
  * - Yahoo (search.yahoo.com/search?p=)
  */
 
+// Cross-browser compatibility: Chrome uses 'chrome', Firefox uses 'browser'
+if (typeof browser === 'undefined') {
+  globalThis.browser = chrome;
+}
+
 // Store shortcuts fetched from background script
 let shortcuts = [];
 

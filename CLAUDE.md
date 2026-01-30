@@ -1,6 +1,6 @@
 # SearchGoggles - Browser Extension
 
-A Firefox extension for creating keyboard shortcuts that refine search queries across search engines.
+A browser extension for creating keyboard shortcuts that refine search queries across search engines. Supports Firefox and Chrome.
 
 ## What It Does
 
@@ -9,14 +9,21 @@ Users press a keyboard shortcut (e.g., `⌥R`) while on a search results page, a
 ## Architecture
 
 ```
-manifest.json          Extension config (Manifest v2)
+manifest.json          Firefox config (Manifest V2)
+manifest.chrome.json   Chrome config (Manifest V3)
 background.js          Message broker, storage, validation
 content.js             Keyboard handling, URL manipulation
 popup/
   popup.html           UI structure
   popup.js             State management, rendering
   popup.css            Styling with CSS variables
+build.sh               Creates browser-specific builds in dist/
 ```
+
+### Cross-Browser Compatibility
+- JS files use a shim: `if (typeof browser === 'undefined') globalThis.browser = chrome;`
+- Firefox uses `browser.*` API natively; Chrome uses `chrome.*` (aliased via shim)
+- Manifest V2 for Firefox, Manifest V3 for Chrome (required since June 2025)
 
 **Data Flow:**
 ```
@@ -95,10 +102,14 @@ Detection via URL patterns in `content.js` → `detectSearchEngine()`
 ## Development
 
 ```bash
-# Load in Firefox
+# Build for distribution
+./build.sh              # Creates dist/firefox/ and dist/chrome/
+
+# Load in Firefox (development)
 about:debugging → This Firefox → Load Temporary Add-on → manifest.json
 
-# No build step required
+# Load in Chrome (development)
+chrome://extensions → Enable Developer mode → Load unpacked → select dist/chrome/
 ```
 
 ## Do Not

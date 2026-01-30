@@ -12,6 +12,7 @@ Thumbs.db
 # Build artifacts
 *.zip
 web-ext-artifacts/
+dist/
 
 # Environment files
 .env

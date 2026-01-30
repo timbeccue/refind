@@ -1,5 +1,10 @@
 // SearchGoggles Popup Script
 
+// Cross-browser compatibility: Chrome uses 'chrome', Firefox uses 'browser'
+if (typeof browser === 'undefined') {
+  globalThis.browser = chrome;
+}
+
 (function () {
   'use strict';
 

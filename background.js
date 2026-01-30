@@ -7,6 +7,11 @@
  * - Storage operations for shortcuts
  */
 
+// Cross-browser compatibility: Chrome uses 'chrome', Firefox uses 'browser'
+if (typeof browser === 'undefined') {
+  globalThis.browser = chrome;
+}
+
 // Default shortcuts configuration
 const DEFAULT_SHORTCUTS = [
   {

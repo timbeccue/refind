@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "SearchGoggles",
+  "version": "1.0.0",
+  "description": "Put on your search goggles - keyboard shortcuts to narrow your search results",
+  "author": "timbeccue",
+  "homepage_url": "https://timbeccue.github.io/searchgoggles/",
+
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "*://www.google.*/search*",
+    "*://google.*/search*",
+    "*://www.bing.com/search*",
+    "*://duckduckgo.com/*",
+    "*://search.yahoo.com/search*"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.*/search*",
+        "*://google.*/search*",
+        "*://www.bing.com/search*",
+        "*://duckduckgo.com/*",
+        "*://search.yahoo.com/search*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "SearchGoggles",
+    "default_popup": "popup/popup.html"
+  }
+}
