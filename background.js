@@ -31,9 +31,8 @@ browser.runtime.onInstalled.addListener(async (details) => {
     try {
       // Set default shortcuts on fresh install
       await browser.storage.local.set({ shortcuts: DEFAULT_SHORTCUTS });
-      console.log('Refind: Default shortcuts initialized');
     } catch (error) {
-      console.error('Refind: Error initializing default shortcuts:', error);
+      // Silently fail - defaults will be used on next getShortcuts call
     }
   }
 });
@@ -52,7 +51,6 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return handleSaveShortcuts(message.shortcuts);
 
     default:
-      console.warn('Refind: Unknown message action:', message.action);
       return Promise.resolve({ success: false, error: 'Unknown action' });
   }
 });
@@ -68,7 +66,6 @@ async function handleGetShortcuts() {
     const shortcuts = result.shortcuts || DEFAULT_SHORTCUTS;
     return { success: true, shortcuts };
   } catch (error) {
-    console.error('Refind: Error getting shortcuts:', error);
     return { success: false, error: error.message };
   }
 }
@@ -99,16 +96,17 @@ async function handleSaveShortcuts(shortcuts) {
       if (typeof shortcut.term !== 'string' || !shortcut.term.trim()) {
         throw new Error('Shortcut must have a non-empty term');
       }
+      if (shortcut.term.length > 500) {
+        throw new Error('Shortcut term must be 500 characters or less');
+      }
       if (typeof shortcut.enabled !== 'boolean') {
         throw new Error('Shortcut must have boolean enabled field');
       }
     }
 
     await browser.storage.local.set({ shortcuts });
-    console.log('Refind: Shortcuts saved successfully');
     return { success: true };
   } catch (error) {
-    console.error('Refind: Error saving shortcuts:', error);
     return { success: false, error: error.message };
   }
 }

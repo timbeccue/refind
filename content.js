@@ -96,7 +96,6 @@ function appendTermAndReload(queryParam, term) {
   // Don't add if the term is already in the query (as a complete phrase, not substring)
   const termRegex = new RegExp('(^|\\s)' + escapeRegex(term) + '(\\s|$)', 'i');
   if (termRegex.test(currentQuery)) {
-    console.log('Refind: Term already in query, skipping');
     return;
   }
 
@@ -117,7 +116,6 @@ function appendTermAndReload(queryParam, term) {
   }
 
   // Navigate to the new URL
-  console.log(`Refind: Appending "${term}" to search query`);
   window.location.href = url.toString();
 }
 
@@ -196,15 +194,11 @@ async function initialize() {
 
     if (response.success) {
       shortcuts = response.shortcuts;
-      console.log('Refind: Loaded', shortcuts.length, 'shortcuts');
-
       // Set up keyboard event listener
       document.addEventListener('keydown', handleKeydown, true);
-    } else {
-      console.error('Refind: Failed to load shortcuts:', response.error);
     }
   } catch (error) {
-    console.error('Refind: Error initializing content script:', error);
+    // Silently fail - extension won't work but page remains functional
   }
 }
 
@@ -215,6 +209,5 @@ initialize();
 browser.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'local' && changes.shortcuts) {
     shortcuts = changes.shortcuts.newValue || [];
-    console.log('Refind: Shortcuts updated, now have', shortcuts.length, 'shortcuts');
   }
 });

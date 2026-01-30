@@ -113,7 +113,6 @@
       const response = await browser.runtime.sendMessage({ action: 'getShortcuts' });
       shortcuts = response.shortcuts || [];
     } catch (err) {
-      console.error('Failed to load shortcuts:', err);
       shortcuts = [];
     }
   }
@@ -126,7 +125,6 @@
         showError(response.error || 'Failed to save');
       }
     } catch (err) {
-      console.error('Failed to save shortcuts:', err);
       showError('Failed to save shortcuts');
     }
   }
