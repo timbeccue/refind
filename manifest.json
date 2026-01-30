@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Customize keyboard shortcuts to refine searches with site filters and terms",
   "author": "timbeccue",
-  "homepage_url": "https://github.com/timbeccue/refind",
+  "homepage_url": "https://timbeccue.github.io/refind/",
 
   "permissions": [
     "storage",
