@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refind - Customizable Search Shortcuts for Firefox</title>
-  <meta name="description" content="A Firefox extension that adds customizable keyboard shortcuts to append search terms to your queries. Search Reddit, filter by site, and more with a single keystroke.">
+  <title>SearchGoggles - Focus Your Search</title>
+  <meta name="description" content="A Firefox extension that helps you focus your search results. Add customizable keyboard shortcuts to instantly refine queries with site filters, keywords, and more.">
   <style>
     :root {
       --accent: #4A90D9;
@@ -410,12 +410,21 @@
     <div class="container">
       <a href="#" class="logo">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="13" cy="13" r="9" stroke="#4A90D9" stroke-width="2.5" fill="none"/>
-          <line x1="20" y1="20" x2="28" y2="28" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="9" y1="13" x2="17" y2="13" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
-          <line x1="13" y1="9" x2="13" y2="17" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <!-- Left lens -->
+          <ellipse cx="9" cy="16" rx="7" ry="6" stroke="#4A90D9" stroke-width="2" fill="none"/>
+          <!-- Right lens -->
+          <ellipse cx="23" cy="16" rx="7" ry="6" stroke="#4A90D9" stroke-width="2" fill="none"/>
+          <!-- Bridge connecting lenses -->
+          <path d="M16 16 Q16 13 16 16" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <line x1="16" y1="14" x2="16" y2="18" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <!-- Straps -->
+          <line x1="2" y1="14" x2="2" y2="18" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <line x1="30" y1="14" x2="30" y2="18" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <!-- Small + in left lens (search hint) -->
+          <line x1="7" y1="16" x2="11" y2="16" stroke="#4A90D9" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+          <line x1="9" y1="14" x2="9" y2="18" stroke="#4A90D9" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
         </svg>
-        Refind
+        SearchGoggles
       </a>
       <nav>
         <a href="#features">Features</a>
@@ -430,13 +439,35 @@
     <section class="hero">
       <div class="container">
         <svg class="hero-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="22" stroke="#4A90D9" stroke-width="5" fill="none"/>
-          <line x1="49" y1="49" x2="70" y2="70" stroke="#4A90D9" stroke-width="5" stroke-linecap="round"/>
-          <line x1="22" y1="32" x2="42" y2="32" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
-          <line x1="32" y1="22" x2="32" y2="42" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+          <defs>
+            <!-- Gradient for lens shine effect -->
+            <linearGradient id="lensShine" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6BA3E0;stop-opacity:0.3" />
+              <stop offset="50%" style="stop-color:#4A90D9;stop-opacity:0.1" />
+              <stop offset="100%" style="stop-color:#3A7BC8;stop-opacity:0.2" />
+            </linearGradient>
+          </defs>
+          <!-- Left lens -->
+          <ellipse cx="24" cy="40" rx="18" ry="15" stroke="#4A90D9" stroke-width="4" fill="url(#lensShine)"/>
+          <!-- Right lens -->
+          <ellipse cx="56" cy="40" rx="18" ry="15" stroke="#4A90D9" stroke-width="4" fill="url(#lensShine)"/>
+          <!-- Bridge connecting lenses -->
+          <path d="M42 40 L38 40" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+          <!-- Left strap -->
+          <path d="M6 38 L6 42" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+          <line x1="6" y1="40" x2="6" y2="40" stroke="#4A90D9" stroke-width="6" stroke-linecap="round"/>
+          <!-- Right strap -->
+          <path d="M74 38 L74 42" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+          <line x1="74" y1="40" x2="74" y2="40" stroke="#4A90D9" stroke-width="6" stroke-linecap="round"/>
+          <!-- + symbol in left lens (search/focus hint) -->
+          <line x1="18" y1="40" x2="30" y2="40" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          <line x1="24" y1="34" x2="24" y2="46" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Subtle sparkle/wink on right lens -->
+          <circle cx="62" cy="35" r="2" fill="#4A90D9" opacity="0.4"/>
+          <circle cx="65" cy="33" r="1" fill="#4A90D9" opacity="0.3"/>
         </svg>
-        <h1>Refind</h1>
-        <p class="tagline">Search smarter with shortcuts</p>
+        <h1>SearchGoggles</h1>
+        <p class="tagline">Put on your search goggles</p>
         <p>A Firefox extension that adds customizable keyboard shortcuts to instantly refine your search queries. Append site filters, keywords, or any text with a single keystroke.</p>
         <div class="cta-buttons">
           <a href="#installation" class="btn btn-primary">
@@ -447,7 +478,7 @@
             </svg>
             Install for Firefox
           </a>
-          <a href="https://github.com/timbeccue/refind" class="btn btn-secondary">
+          <a href="https://github.com/timbeccue/searchgoggles" class="btn btn-secondary">
             View on GitHub
           </a>
         </div>
@@ -514,7 +545,7 @@
             <rect x="0" y="0" width="320" height="44" rx="8" fill="var(--card-bg)"/>
             <rect x="0" y="36" width="320" height="8" fill="var(--card-bg)"/>
             <line x1="12" y1="44" x2="308" y2="44" stroke="var(--border)" stroke-width="1"/>
-            <text x="12" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600" fill="var(--text)">Refind</text>
+            <text x="12" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="var(--text)">SearchGoggles</text>
 
             <!-- Shortcut item 1 -->
             <rect x="12" y="56" width="296" height="44" rx="6" fill="var(--bg-alt)" stroke="var(--border)" stroke-width="1"/>
@@ -549,12 +580,12 @@
           <div class="install-card">
             <h3>Firefox Add-ons</h3>
             <p>Install directly from the official Firefox Add-ons store.</p>
-            <a href="https://addons.mozilla.org/firefox/addon/refind/" class="btn btn-primary">Get the Extension</a>
+            <a href="https://addons.mozilla.org/firefox/addon/searchgoggles/" class="btn btn-primary">Get the Extension</a>
           </div>
           <div class="install-card">
             <h3>Manual Install</h3>
             <p>For developers or testing. Load the extension temporarily in Firefox.</p>
-            <a href="https://github.com/timbeccue/refind" class="btn btn-secondary">View Source</a>
+            <a href="https://github.com/timbeccue/searchgoggles" class="btn btn-secondary">View Source</a>
           </div>
         </div>
       </div>
@@ -608,7 +639,7 @@
 
   <footer>
     <div class="container">
-      <p>Refind is open source. <a href="https://github.com/timbeccue/refind">View on GitHub</a></p>
+      <p>SearchGoggles is open source. <a href="https://github.com/timbeccue/searchgoggles">View on GitHub</a></p>
     </div>
   </footer>
 </body>

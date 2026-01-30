@@ -1,6 +1,6 @@
-# Refind
+# SearchGoggles
 
-A Firefox extension that adds customizable keyboard shortcuts to append search terms to your queries. Quickly filter search results by site (e.g., Reddit) without retyping your search.
+Put on your search goggles - a browser extension that adds keyboard shortcuts to narrow your search results. Focus your search vision and filter results instantly without retyping queries.
 
 ![Firefox](https://img.shields.io/badge/Firefox-Extension-FF7139?logo=firefox-browser&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -35,7 +35,7 @@ Coming soon to Firefox Add-ons.
 2. Press the keyboard shortcut (default: `Cmd+Shift+E` on macOS, `Ctrl+Shift+E` on Windows/Linux)
 3. Your search query will be updated with the configured search term appended
 
-To customize shortcuts, click the Refind extension icon in your toolbar.
+To customize shortcuts, click the SearchGoggles extension icon in your toolbar.
 
 ## Default Shortcut
 
@@ -54,8 +54,8 @@ To customize shortcuts, click the Refind extension icon in your toolbar.
 
 1. Clone the repository:
    ```bash
-   git clone git@github.com:timbeccue/refind.git
-   cd refind
+   git clone git@github.com:timbeccue/searchgoggles.git
+   cd searchgoggles
    ```
 
 2. Load the extension in Firefox:

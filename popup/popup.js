@@ -1,4 +1,4 @@
-// Refind Popup Script
+// SearchGoggles Popup Script
 
 (function () {
   'use strict';

@@ -1,5 +1,5 @@
 /**
- * Refind - Content Script
+ * SearchGoggles - Content Script
  *
  * Runs on supported search engine pages and listens for keyboard shortcuts.
  * When a configured shortcut is detected, appends the associated term

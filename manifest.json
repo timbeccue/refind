@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Refind",
+  "name": "SearchGoggles",
   "version": "1.0.0",
-  "description": "Customize keyboard shortcuts to refine searches with site filters and terms",
+  "description": "Put on your search goggles - keyboard shortcuts to narrow your search results",
   "author": "timbeccue",
-  "homepage_url": "https://timbeccue.github.io/refind/",
+  "homepage_url": "https://timbeccue.github.io/searchgoggles/",
 
   "permissions": [
     "storage",
@@ -43,13 +43,13 @@
       "16": "icons/icon-16.png",
       "48": "icons/icon-48.png"
     },
-    "default_title": "Refind",
+    "default_title": "SearchGoggles",
     "default_popup": "popup/popup.html"
   },
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "refind@timbeccue",
+      "id": "searchgoggles@timbeccue",
       "strict_min_version": "57.0"
     }
   }

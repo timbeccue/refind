@@ -1,5 +1,5 @@
 /**
- * Refind - Background Script
+ * SearchGoggles - Background Script
  *
  * Handles:
  * - Initializing default shortcuts on extension install
