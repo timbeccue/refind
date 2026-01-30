@@ -61,11 +61,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "searchgoggles@timbeccue",
-      "strict_min_version": "79.0",
-      "data_collection_permissions": {
-        "required": [],
-        "optional": []
-      }
+      "strict_min_version": "79.0"
     }
   }
 }
