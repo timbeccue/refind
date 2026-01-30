@@ -49,14 +49,17 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   switch (message.action) {
     case 'getShortcuts':
       // Return shortcuts to content script or popup
-      return handleGetShortcuts();
+      handleGetShortcuts().then(sendResponse);
+      return true; // Required for async response in Chrome
 
     case 'saveShortcuts':
       // Save shortcuts from popup
-      return handleSaveShortcuts(message.shortcuts);
+      handleSaveShortcuts(message.shortcuts).then(sendResponse);
+      return true; // Required for async response in Chrome
 
     default:
-      return Promise.resolve({ success: false, error: 'Unknown action' });
+      sendResponse({ success: false, error: 'Unknown action' });
+      return false;
   }
 });
 
