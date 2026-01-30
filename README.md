@@ -1,9 +1,28 @@
 # SearchGoggles
 
-Put on your search goggles - a browser extension that adds keyboard shortcuts to narrow your search results. Focus your search vision and filter results instantly without retyping queries.
+A browser extension that filters search results with a single keystroke.
 
 ![Firefox](https://img.shields.io/badge/Firefox-Extension-FF7139?logo=firefox-browser&logoColor=white)
+![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=google-chrome&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+## The Problem
+
+You search for "best mechanical keyboards" and get a page full of SEO-optimized listicles and affiliate links. What you actually want is to know what real people on Reddit think.
+
+## The Solution
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  1. Search                      2. Press ⌥R                     │
+│     "best mechanical keyboards"    ↓                            │
+│                                                                 │
+│  3. Results filtered instantly                                  │
+│     "best mechanical keyboards site:reddit.com"                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+One keystroke. Real opinions. No retyping.
 
 ## Features
 
@@ -17,31 +36,37 @@ Put on your search goggles - a browser extension that adds keyboard shortcuts to
 
 ## Installation
 
-### Firefox Add-ons
+### Browser Stores
 
-Coming soon to Firefox Add-ons.
+- **Firefox Add-ons** - Coming soon
+- **Chrome Web Store** - Coming soon
 
 ### Manual Installation
 
-1. Clone or download this repository
-2. Open Firefox and navigate to `about:debugging`
-3. Click "This Firefox" in the left sidebar
-4. Click "Load Temporary Add-on..."
-5. Select the `manifest.json` file from this extension's directory
+**Firefox:**
+1. Clone this repository
+2. Go to `about:debugging` → This Firefox → Load Temporary Add-on
+3. Select `manifest.json`
+
+**Chrome:**
+1. Run `./build.sh` to generate the Chrome build
+2. Go to `chrome://extensions` → Enable Developer mode → Load unpacked
+3. Select the `dist/chrome` folder
 
 ## Usage
 
-1. Perform a search on any supported search engine
-2. Press the keyboard shortcut (default: `Cmd+Shift+E` on macOS, `Ctrl+Shift+E` on Windows/Linux)
-3. Your search query will be updated with the configured search term appended
+1. **Search** - Use Google, Bing, DuckDuckGo, or Yahoo as usual
+2. **Filter** - Press `⌥R` (Option+R) to filter results to Reddit
+3. **Customize** - Click the extension icon to add shortcuts for other sites
 
-To customize shortcuts, click the SearchGoggles extension icon in your toolbar.
+## Example Shortcuts
 
-## Default Shortcut
-
-| Shortcut | Action |
-|----------|--------|
-| `Cmd+Shift+E` (macOS) / `Ctrl+Shift+E` (Windows/Linux) | Append `site:reddit.com` to search |
+| Shortcut | Adds to search | Use case |
+|----------|----------------|----------|
+| `⌥R` | `site:reddit.com` | Real user opinions |
+| `⌥S` | `site:stackoverflow.com` | Programming answers |
+| `⌥G` | `site:github.com` | Code and projects |
+| `⌥H` | `site:news.ycombinator.com` | Tech discussions |
 
 ## Supported Search Engines
 
@@ -52,18 +77,16 @@ To customize shortcuts, click the SearchGoggles extension icon in your toolbar.
 
 ## Development
 
-1. Clone the repository:
-   ```bash
-   git clone git@github.com:timbeccue/searchgoggles.git
-   cd searchgoggles
-   ```
+```bash
+git clone git@github.com:timbeccue/searchgoggles.git
+cd searchgoggles
 
-2. Load the extension in Firefox:
-   - Navigate to `about:debugging#/runtime/this-firefox`
-   - Click "Load Temporary Add-on..."
-   - Select the `manifest.json` file
+# Build for both browsers
+./build.sh
 
-3. Make changes and reload the extension to test
+# Load in Firefox: about:debugging → Load Temporary Add-on → manifest.json
+# Load in Chrome: chrome://extensions → Load unpacked → dist/chrome/
+```
 
 ## License
 
