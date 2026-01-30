@@ -216,12 +216,14 @@
     }
 
     .demo-arrow kbd {
-      font-size: 0.9rem;
-      padding: 8px 14px;
+      font-size: 1.1rem;
+      padding: 12px 20px;
       background: var(--accent);
       color: white;
       border: none;
-      box-shadow: 0 2px 8px rgba(74, 144, 217, 0.3);
+      box-shadow: 0 4px 12px rgba(74, 144, 217, 0.4);
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .demo-arrow svg {
@@ -259,6 +261,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-align: left;
     }
 
     .search-bar-input .highlight {
@@ -268,11 +271,13 @@
 
     .search-results {
       padding: 16px;
+      text-align: left;
     }
 
     .search-result {
       padding: 12px 0;
       border-bottom: 1px solid var(--border);
+      text-align: left;
     }
 
     .search-result:last-child {
@@ -617,7 +622,7 @@
 
           <!-- Arrow with shortcut -->
           <div class="demo-arrow">
-            <kbd>⌥ R</kbd>
+            <kbd>Option + R</kbd>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
@@ -753,7 +758,7 @@
             <span class="step-number">2</span>
             <div class="step-content">
               <h3>Want real opinions? Press your shortcut</h3>
-              <p>Looking at generic SEO content but want to know what actual people think? Press <kbd>⌥R</kbd> and your results instantly filter to Reddit only.</p>
+              <p>Looking at generic SEO content but want to know what actual people think? Press <kbd>Option + R</kbd> and your results instantly filter to Reddit only.</p>
             </div>
           </div>
           <div class="usage-step">
@@ -767,19 +772,19 @@
           <div class="shortcut-example">
             <h4>Example Shortcuts</h4>
             <div class="shortcut-row">
-              <kbd>⌥ R</kbd>
+              <kbd>Option + R</kbd>
               <span class="shortcut-action">Filter to Reddit</span>
             </div>
             <div class="shortcut-row">
-              <kbd>⌥ S</kbd>
+              <kbd>Option + S</kbd>
               <span class="shortcut-action">Filter to Stack Overflow</span>
             </div>
             <div class="shortcut-row">
-              <kbd>⌥ G</kbd>
+              <kbd>Option + G</kbd>
               <span class="shortcut-action">Filter to GitHub</span>
             </div>
             <div class="shortcut-row">
-              <kbd>⌥ H</kbd>
+              <kbd>Option + H</kbd>
               <span class="shortcut-action">Filter to Hacker News</span>
             </div>
           </div>
