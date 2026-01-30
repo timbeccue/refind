@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refind</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Refind</h1>
+    </header>
+
+    <main>
+      <div id="shortcuts-list" class="shortcuts-list">
+        <!-- Shortcuts will be rendered here -->
+      </div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <p>No shortcuts configured yet.</p>
+      </div>
+
+      <div id="add-form" class="add-form" hidden>
+        <div class="form-group">
+          <label for="key-input">Keyboard Shortcut</label>
+          <input
+            type="text"
+            id="key-input"
+            class="key-input"
+            placeholder="Click and press keys..."
+            readonly
+          >
+          <button type="button" id="clear-keys" class="btn-small">Clear</button>
+        </div>
+        <div class="form-group">
+          <label for="term-input">Search Term</label>
+          <input
+            type="text"
+            id="term-input"
+            class="term-input"
+            placeholder="e.g., site:reddit.com"
+          >
+        </div>
+        <div class="form-actions">
+          <button type="button" id="save-btn" class="btn btn-primary">Save</button>
+          <button type="button" id="cancel-btn" class="btn btn-secondary">Cancel</button>
+        </div>
+      </div>
+
+      <button type="button" id="add-shortcut-btn" class="btn btn-add">
+        + Add Shortcut
+      </button>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

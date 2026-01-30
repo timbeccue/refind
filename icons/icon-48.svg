@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Magnifying glass with plus sign - represents refining/adding to search -->
+  <circle cx="20" cy="20" r="14" fill="none" stroke="#4A90D9" stroke-width="4"/>
+  <line x1="30" y1="30" x2="43" y2="43" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <!-- Plus sign inside the magnifying glass -->
+  <line x1="12" y1="20" x2="28" y2="20" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+  <line x1="20" y1="12" x2="20" y2="28" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+</svg>

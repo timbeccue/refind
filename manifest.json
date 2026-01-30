@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "Refind",
+  "version": "1.0.0",
+  "description": "Customize keyboard shortcuts to refine searches with site filters and terms",
+  "author": "timbeccue",
+
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+
+  "icons": {
+    "16": "icons/icon-16.svg",
+    "48": "icons/icon-48.svg",
+    "128": "icons/icon-128.svg"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.*/search*",
+        "*://google.*/search*",
+        "*://www.bing.com/search*",
+        "*://duckduckgo.com/*",
+        "*://search.yahoo.com/search*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon-16.svg",
+      "48": "icons/icon-48.svg"
+    },
+    "default_title": "Refind",
+    "default_popup": "popup/popup.html"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "refind@timbeccue",
+      "strict_min_version": "57.0"
+    }
+  }
+}
