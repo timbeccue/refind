@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refind - Customizable Search Shortcuts for Firefox</title>
+  <meta name="description" content="A Firefox extension that adds customizable keyboard shortcuts to append search terms to your queries. Search Reddit, filter by site, and more with a single keystroke.">
+  <style>
+    :root {
+      --accent: #4A90D9;
+      --accent-light: #6BA3E0;
+      --accent-dark: #3A7BC8;
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --text: #1a1a2e;
+      --text-muted: #6c757d;
+      --border: #e9ecef;
+      --card-bg: #ffffff;
+      --code-bg: #f1f3f4;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --bg-alt: #161b22;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --border: #30363d;
+        --card-bg: #161b22;
+        --code-bg: #21262d;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .tagline {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    /* Features */
+    .features {
+      background: var(--bg-alt);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Installation */
+    .install-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .install-card {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .install-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .install-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    /* Usage */
+    .usage {
+      background: var(--bg-alt);
+    }
+
+    .usage-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .usage-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .shortcut-example {
+      background: var(--code-bg);
+      padding: 20px 24px;
+      border-radius: 8px;
+      margin-top: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .shortcut-example h4 {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shortcut-row:last-child {
+      border-bottom: none;
+    }
+
+    kbd {
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .shortcut-action {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .tagline {
+        font-size: 1.2rem;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .usage-step {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .shortcut-row {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="9" stroke="#4A90D9" stroke-width="2.5" fill="none"/>
+          <line x1="20" y1="20" x2="28" y2="28" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="22" y1="8" x2="22" y2="14" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+          <line x1="19" y1="11" x2="25" y2="11" stroke="#4A90D9" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Refind
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#installation">Install</a>
+        <a href="#usage">Usage</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <svg class="hero-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="22" stroke="#4A90D9" stroke-width="5" fill="none"/>
+          <line x1="49" y1="49" x2="70" y2="70" stroke="#4A90D9" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="58" cy="22" r="12" fill="#4A90D9" fill-opacity="0.15"/>
+          <line x1="58" y1="16" x2="58" y2="28" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+          <line x1="52" y1="22" x2="64" y2="22" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h1>Refind</h1>
+        <p class="tagline">Search smarter with shortcuts</p>
+        <p>A Firefox extension that adds customizable keyboard shortcuts to instantly refine your search queries. Append site filters, keywords, or any text with a single keystroke.</p>
+        <div class="cta-buttons">
+          <a href="#installation" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Install for Firefox
+          </a>
+          <a href="https://github.com/timbeccue/refind" class="btn btn-secondary">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Features</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">&#x2328;</span>
+            <h3>Custom Keyboard Shortcuts</h3>
+            <p>Create your own shortcuts with any modifier combination. Press-to-record makes capturing shortcuts effortless.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">&#x1F50D;</span>
+            <h3>Multi-Engine Support</h3>
+            <p>Works seamlessly on Google, Bing, DuckDuckGo, and Yahoo. Your shortcuts follow you everywhere.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">&#x26A1;</span>
+            <h3>Instant Refinement</h3>
+            <p>Append any text to your current search query. Filter by site, add keywords, or customize results instantly.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">&#x2699;</span>
+            <h3>Full Control</h3>
+            <p>Enable, disable, edit, or delete shortcuts anytime. Warnings for browser shortcut conflicts keep you informed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="installation" class="installation">
+      <div class="container">
+        <h2>Installation</h2>
+        <div class="install-options">
+          <div class="install-card">
+            <h3>Firefox Add-ons</h3>
+            <p>Install directly from the official Firefox Add-ons store.</p>
+            <a href="https://addons.mozilla.org/firefox/addon/refind/" class="btn btn-primary">Get the Extension</a>
+          </div>
+          <div class="install-card">
+            <h3>Manual Install</h3>
+            <p>For developers or testing. Load the extension temporarily in Firefox.</p>
+            <a href="https://github.com/timbeccue/refind" class="btn btn-secondary">View Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="usage" class="usage">
+      <div class="container">
+        <h2>How to Use</h2>
+        <div class="usage-content">
+          <div class="usage-step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+              <h3>Search as usual</h3>
+              <p>Start your search on Google, Bing, DuckDuckGo, or Yahoo just like you normally would.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+              <h3>Press your shortcut</h3>
+              <p>Hit your keyboard shortcut to instantly append text to your search query. The default shortcut adds "site:reddit.com" to find Reddit discussions.</p>
+            </div>
+          </div>
+          <div class="usage-step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+              <h3>Customize to your needs</h3>
+              <p>Click the extension icon to add new shortcuts, change what text gets appended, or create shortcuts for different sites and filters.</p>
+            </div>
+          </div>
+
+          <div class="shortcut-example">
+            <h4>Example Shortcuts</h4>
+            <div class="shortcut-row">
+              <kbd>Cmd + Shift + E</kbd>
+              <span class="shortcut-action">Append "site:reddit.com"</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd>Cmd + Shift + S</kbd>
+              <span class="shortcut-action">Append "site:stackoverflow.com"</span>
+            </div>
+            <div class="shortcut-row">
+              <kbd>Cmd + Shift + G</kbd>
+              <span class="shortcut-action">Append "site:github.com"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Refind is open source. <a href="https://github.com/timbeccue/refind">View on GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>
