@@ -15,7 +15,7 @@ You search for "best mechanical keyboards" and realize that only showing results
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  1. Search "best mechanical keyboards"                          |
-|  2. Press cmd-shift-R                                           │
+|  2. Press cmd-shift-E                                           │
 │  3. Results filtered instantly                                  │
 │     "best mechanical keyboards site:reddit.com"                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -55,7 +55,7 @@ Much faster, minimal friction. This has saved me a lot of time, and I hope it mi
 ## Usage
 
 1. **Search** - Use Google, Bing, DuckDuckGo, or Yahoo as usual
-2. **Filter** - Press `⌥R` (Option+R) to filter results to Reddit
+2. **Filter** - Press cmd-shift-E to filter results to Reddit (or customize your own)
 3. **Customize** - Click the extension icon to add shortcuts for other sites
 
 ## Example Shortcuts
