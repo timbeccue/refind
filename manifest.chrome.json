@@ -7,8 +7,7 @@
   "homepage_url": "https://timbeccue.github.io/searchgoggles/",
 
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
 
   "host_permissions": [
