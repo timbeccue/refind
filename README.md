@@ -8,7 +8,7 @@ A browser extension that filters search results with a single keystroke.
 
 ## The Problem
 
-You search for "best mechanical keyboards" and get a page full of SEO-optimized listicles and affiliate links. What you actually want is to know what real people on Reddit think.
+You search for "best mechanical keyboards" and realize that only showing results from reddit would be more useful. But it takes a long time to type site:reddit.com into the search bar.
 
 ## The Solution
 
@@ -21,7 +21,7 @@ You search for "best mechanical keyboards" and get a page full of SEO-optimized 
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-One keystroke. Real opinions. No retyping.
+Much faster, minimal friction. This has saved me a lot of time, and I hope it might help others too.
 
 ## Features
 
