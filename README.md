@@ -14,9 +14,8 @@ You search for "best mechanical keyboards" and get a page full of SEO-optimized 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  1. Search                      2. Press ⌥R                     │
-│     "best mechanical keyboards"    ↓                            │
-│                                                                 │
+│  1. Search "best mechanical keyboards"                          |
+|  2. Press cmd-shift-R                                           │
 │  3. Results filtered instantly                                  │
 │     "best mechanical keyboards site:reddit.com"                 │
 └─────────────────────────────────────────────────────────────────┘
