@@ -37,7 +37,7 @@ Much faster, minimal friction. This has saved me a lot of time, and I hope it mi
 
 ### Browser Stores
 
-- **Firefox Add-ons** - Coming soon
+- **Firefox Add-ons** - [Install from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/searchgoggles/)
 - **Chrome Web Store** - Coming soon
 
 ### Manual Installation
