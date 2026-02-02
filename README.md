@@ -2,7 +2,7 @@
 
 A browser extension that filters search results with a single keystroke.
 
-![Firefox](https://img.shields.io/badge/Firefox-Extension-FF7139?logo=firefox-browser&logoColor=white)
+[![Firefox](https://img.shields.io/badge/Firefox-Extension-FF7139?logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/searchgoggles/)
 ![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=google-chrome&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
