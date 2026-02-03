@@ -3,7 +3,7 @@
 A browser extension that filters search results with a single keystroke.
 
 [![Firefox](https://img.shields.io/badge/Firefox-Extension-FF7139?logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/searchgoggles/)
-![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=google-chrome&logoColor=white)
+[![Chrome](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/searchgoggles/labhboipboagonblmcbdhkhcbmnnknfn)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## The Problem
@@ -38,7 +38,7 @@ Much faster, minimal friction. This has saved me a lot of time, and I hope it mi
 ### Browser Stores
 
 - **Firefox Add-ons** - [Install from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/searchgoggles/)
-- **Chrome Web Store** - Coming soon
+- **Chrome Web Store** - [Install from Chrome Web Store](https://chromewebstore.google.com/detail/searchgoggles/labhboipboagonblmcbdhkhcbmnnknfn)
 
 ### Manual Installation
 
